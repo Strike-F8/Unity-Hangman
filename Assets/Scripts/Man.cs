@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Man : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public SpriteRenderer spriteRenderer { get; private set; }
+
+    public int health { get; private set; }
+    public Sprite[] parts { get; private set; }
+
+    public void Awake()
     {
-        
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    public bool IncorrectGuess()
+    {
+        health--;
+        if (health <= 0)
+            return true;
+        else
+        {
+            return false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetMan()
     {
-        
+        health = 6;
     }
 }
