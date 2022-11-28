@@ -34,10 +34,10 @@ public class GameManager : MonoBehaviour
             string dictionary = System.IO.File.ReadAllText("Assets/words.txt");
             words = dictionary.Split('\n');
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException)
         {
-            Console.WriteLine("I did not find words.txt!!!");
-            words = new string[2] { "food", "drink" };
+            Console.WriteLine("I did not find words.txt!!!\nUsing default word list instead!!!!");
+            words = new string[6] { "food", "drink", "Dessert", "Lunch", "Dinner", "Breakfast" };
         }
 
         letters = new char[26] {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         guessedLetters = new bool[26] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
     }
 
-    public LinkedList<int> guessLetter(int letter)
+    public LinkedList<int> GuessLetter(int letter)
     {
         guessedLetters[letter] = true;
         // Check if the guessed letter is in the word
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void MakeAGuess(int letter)
     {
-        LinkedList<int> indexes = guessLetter(letter);
+        LinkedList<int> indexes = GuessLetter(letter);
 
         if (indexes.Count == 0)
             IncorrectGuess();
@@ -88,10 +88,11 @@ public class GameManager : MonoBehaviour
 
     public void CorrectGuess(int[] indexes)
     {
-        // check if the level is complete
+        // Reveal the correctly guessed indexes
         foreach (int i in indexes)
             blanks[i] = word[i];
-
+        
+        // check if the level is complete
         if (blanks.ToString() == word.ToString())
             LevelComplete();
     }
@@ -104,11 +105,12 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete()
     {
-
+        // Load the win screen with a button to advance to the next level
+        SceneManager.LoadScene("Win");
     }
     public void GameOver()
     {
-
+        SceneManager.LoadScene("GameOver");
     }
     private void Awake()
     {

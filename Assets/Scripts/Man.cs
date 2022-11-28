@@ -7,7 +7,7 @@ public class Man : MonoBehaviour
     public SpriteRenderer spriteRenderer { get; private set; }
 
     public int health { get; private set; }
-    public Sprite[] states { get; private set; }
+    public Sprite[] states;
 
     public void Awake()
     {
@@ -16,12 +16,8 @@ public class Man : MonoBehaviour
     public bool IncorrectGuess()
     {
         health--;
-        if (health <= 0)
-            return true;
-        else
-        {
-            return false;
-        }
+        this.spriteRenderer.sprite = this.states[this.health - 1];
+        return health <= 0;
     }
 
     public void ResetMan()
