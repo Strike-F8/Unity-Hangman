@@ -7,7 +7,7 @@ public class Man : MonoBehaviour
     public SpriteRenderer spriteRenderer { get; private set; }
 
     public int health { get; private set; }
-    public Sprite[] parts { get; private set; }
+    public Sprite[] states { get; private set; }
 
     public void Awake()
     {
@@ -27,5 +27,6 @@ public class Man : MonoBehaviour
     public void ResetMan()
     {
         health = 6;
+        this.spriteRenderer.sprite = this.states[this.health - 1];
     }
 }

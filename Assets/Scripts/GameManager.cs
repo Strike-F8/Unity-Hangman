@@ -117,4 +117,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelLoaded;
         SceneManager.LoadScene("MainMenu");
     }
+
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.man = FindObjectOfType<Man>();
+    }
 }
