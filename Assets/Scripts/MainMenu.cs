@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 
     public void StartNewGame()
     {
-        // Load the first level
+        FindObjectOfType<GameManager>().StartGame();
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using TMPro;
 using Unity.VisualScripting;
@@ -15,16 +16,21 @@ public class GameManager : MonoBehaviour
     public int score;
     public int level;
     public int wordLength;
-    public char[] letters;
-    public bool[] guessedLetters;
+
+    public Dictionary<char, bool> letters;
 
     public Man man { get; private set; }
 
     public char[] word {  get; private set; }
     public char[] blanks { get; private set; }
+    
+    public TextMeshProUGUI blanksDisplay;
+    public TextMeshProUGUI levelDisplay;
+    public TextMeshProUGUI scoreDisplay;
 
     // Start is called before the first frame update
-    public void Start()
+
+    public void StartGame()
     {
         // Initialize the game
         // Retrieve words into list
@@ -40,43 +46,53 @@ public class GameManager : MonoBehaviour
             words = new string[6] { "food", "drink", "Dessert", "Lunch", "Dinner", "Breakfast" };
         }
 
-        letters = new char[26] {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        letters = new Dictionary<char, bool>();
+        for (char c = 'a'; c <= 'z'; c++)
+            letters.Add(c, false);
 
-        guessedLetters = new bool[26] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-
-        SceneManager.LoadScene("Level");
+        level = 1;
+        score = 0;
+        wordLength = 0;
         NextLevel();
     }
 
     public void NextLevel()
     {
+        SceneManager.LoadScene("Level");
         this.level++;
+        levelDisplay.text = $"Level {level}";
         man.ResetMan();
         GetNewWord();
+        foreach (char c in blanks)
+            blanksDisplay.text += "_ ";
     }
 
     public void GetNewWord()
     {
+        // Get a new word from the list of words
         word = words[UnityEngine.Random.Range(0, words.Length)].ToCharArray();
+        // Reset the display for the player's guesses
         blanks = new char[word.Length];
-        guessedLetters = new bool[26] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        // Reset the player's guesses
+        for (char c = 'a'; c <= 'z'; c++)
+            letters[c] = false;
     }
 
-    public LinkedList<int> GuessLetter(int letter)
+    public LinkedList<int> GuessLetter(char letter)
     {
-        guessedLetters[letter] = true;
+        // Record that the player guessed this letter
+        letters[letter] = true;
         // Check if the guessed letter is in the word
-        char guess = letters[letter];
         LinkedList<int> indexes = new LinkedList<int>();
         // Get every instance of the letter in the word
-        for(int i = 0; i< word.Length; i++)
-            if(guess == word[i])
+        for (int i = 0; i < word.Length; i++)
+            if (letter == word[i])
                 indexes.AddLast(i);
         
         return indexes;
     }
 
-    public void MakeAGuess(int letter)
+    public void MakeAGuess(char letter)
     {
         LinkedList<int> indexes = GuessLetter(letter);
 
@@ -105,8 +121,17 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete()
     {
+        // If this is the last level, load the game complete scene
+        if (this.level >= 5)
+            GameComplete();
+        else
         // Load the win screen with a button to advance to the next level
-        SceneManager.LoadScene("Win");
+            SceneManager.LoadScene("Win");
+    }
+
+    public void GameComplete()
+    {
+        SceneManager.LoadScene("GameComplete");
     }
     public void GameOver()
     {
@@ -123,5 +148,10 @@ public class GameManager : MonoBehaviour
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         this.man = FindObjectOfType<Man>();
+    }
+
+    public void ClickLetter(string letter)
+    {
+        MakeAGuess((char)letter[0]);
     }
 }
