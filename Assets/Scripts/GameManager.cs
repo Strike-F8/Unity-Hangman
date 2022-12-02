@@ -28,8 +28,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelDisplay;
     public TextMeshProUGUI scoreDisplay;
 
-    // Start is called before the first frame update
+    public Canvas UI;
 
+    public void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(UI.gameObject);
+        UI.gameObject.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
+    }
     public void StartGame()
     {
         // Initialize the game
@@ -50,41 +57,51 @@ public class GameManager : MonoBehaviour
         for (char c = 'a'; c <= 'z'; c++)
             letters.Add(c, false);
 
-        level = 1;
+        level = 0;
         score = 0;
         wordLength = 0;
+        UI.gameObject.SetActive(true);
         NextLevel();
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level");
         this.level++;
         levelDisplay.text = $"Level {level}";
+        this.man = FindObjectOfType<Man>();
         man.ResetMan();
         GetNewWord();
-        foreach (char c in blanks)
-            blanksDisplay.text += "_ ";
     }
 
     public void GetNewWord()
     {
         // Get a new word from the list of words
-        word = words[UnityEngine.Random.Range(0, words.Length)].ToCharArray();
+        string temp = words[UnityEngine.Random.Range(0, words.Length)];
+        word = temp[0..(temp.Length - 1)].ToCharArray();
+
         // Reset the display for the player's guesses
         blanks = new char[word.Length];
+        wordLength = word.Length;
         // Reset the player's guesses
+        for (int i = 0; i < blanks.Length; i++)
+            blanks[i] = '_';
+        UpdateBlanksDisplay();
         for (char c = 'a'; c <= 'z'; c++)
             letters[c] = false;
     }
 
+    public void UpdateBlanksDisplay()
+    {
+        blanksDisplay.text = "";
+        foreach (char c in blanks)
+            blanksDisplay.text += c + " ";
+    }
+
     public LinkedList<int> GuessLetter(char letter)
     {
-        // Record that the player guessed this letter
-        letters[letter] = true;
         // Check if the guessed letter is in the word
-        LinkedList<int> indexes = new LinkedList<int>();
-        // Get every instance of the letter in the word
+        LinkedList<int> indexes = new();
+
         for (int i = 0; i < word.Length; i++)
             if (letter == word[i])
                 indexes.AddLast(i);
@@ -94,6 +111,9 @@ public class GameManager : MonoBehaviour
 
     public void MakeAGuess(char letter)
     {
+        // Record that the player guessed this letter
+        letters[letter] = true;
+        // Get the indexes where the letter appears in the word
         LinkedList<int> indexes = GuessLetter(letter);
 
         if (indexes.Count == 0)
@@ -107,9 +127,10 @@ public class GameManager : MonoBehaviour
         // Reveal the correctly guessed indexes
         foreach (int i in indexes)
             blanks[i] = word[i];
-        
+        UpdateBlanksDisplay();
+
         // check if the level is complete
-        if (blanks.ToString() == word.ToString())
+        if (blanks.Equals(word))
             LevelComplete();
     }
 
@@ -131,23 +152,13 @@ public class GameManager : MonoBehaviour
 
     public void GameComplete()
     {
+        UI.gameObject.SetActive(false);
         SceneManager.LoadScene("GameComplete");
     }
     public void GameOver()
     {
+        UI.gameObject.SetActive(false);
         SceneManager.LoadScene("GameOver");
-    }
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(FindObjectOfType<Canvas>());
-        SceneManager.sceneLoaded += OnLevelLoaded;
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
-    {
-        this.man = FindObjectOfType<Man>();
     }
 
     public void ClickLetter(string letter)

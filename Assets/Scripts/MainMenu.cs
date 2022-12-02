@@ -8,5 +8,6 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {
         FindObjectOfType<GameManager>().StartGame();
+        Destroy(this.gameObject);
     }
 }
