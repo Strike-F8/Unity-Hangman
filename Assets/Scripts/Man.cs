@@ -11,7 +11,12 @@ public class Man : MonoBehaviour
 
     public void Awake()
     {
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+    }
+
+    public void Start()
+    {
+        ResetMan();
     }
     public bool IncorrectGuess()
     {

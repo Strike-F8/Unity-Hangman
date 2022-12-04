@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         wordLength = 0;
         UI.gameObject.SetActive(true);
+        Destroy(FindObjectOfType<MainMenu>());
         NextLevel();
     }
 
