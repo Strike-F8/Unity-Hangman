@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         UpdateBlanksDisplay();
 
         // check if the level is complete
-        if (blanks.Equals(word))
+        if (blanks.SequenceEqual(word))
             LevelComplete();
     }
 
