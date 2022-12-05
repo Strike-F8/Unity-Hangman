@@ -21,7 +21,7 @@ public class Man : MonoBehaviour
     public bool IncorrectGuess()
     {
         health--;
-        this.spriteRenderer.sprite = this.states[this.health - 1];
+        this.spriteRenderer.sprite = this.states[this.health];
         return health <= 0;
     }
 
