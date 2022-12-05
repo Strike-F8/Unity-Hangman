@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        UI.gameObject.SetActive(true);
         this.level++;
         levelDisplay.text = $"Level {level}";
         this.man = FindObjectOfType<Man>();
