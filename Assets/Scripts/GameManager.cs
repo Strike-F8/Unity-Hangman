@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         return indexes;
     }
 
-    public void MakeAGuess(char letter)
+    public bool MakeAGuess(char letter)
     {
         // Record that the player guessed this letter
         letters[letter] = true;
@@ -119,9 +119,13 @@ public class GameManager : MonoBehaviour
         LinkedList<int> indexes = GuessLetter(letter);
 
         if (indexes.Count == 0)
+        {
             IncorrectGuess();
+            return false;
+        }
         else
             CorrectGuess(indexes.ToArrayPooled<int>());
+        return true;
     }
 
     public void CorrectGuess(int[] indexes)
