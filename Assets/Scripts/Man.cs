@@ -21,13 +21,13 @@ public class Man : MonoBehaviour
     public bool IncorrectGuess()
     {
         health--;
-        this.spriteRenderer.sprite = this.states[this.health];
-        return health <= 0;
+        this.spriteRenderer.sprite = this.states[this.health - 1];
+        return health <= 1;
     }
 
     public void ResetMan()
     {
-        health = 6;
+        health = 7;
         this.spriteRenderer.sprite = this.states[this.health - 1];
     }
 }
