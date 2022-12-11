@@ -62,13 +62,14 @@ public class GameManager : MonoBehaviour
         wordLength = 0;
         UI.gameObject.SetActive(true);
         Destroy(FindObjectOfType<MainMenu>());
-        foreach (var button in FindObjectsOfType<LetterButton>())
-            button.ResetButton();
         NextLevel();
     }
 
     public void NextLevel()
     {
+        foreach (var button in FindObjectsOfType<LetterButton>())
+            button.ResetButton();
+
         UI.gameObject.SetActive(true);
         this.level++;
         levelDisplay.text = $"Level {level}";
