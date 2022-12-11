@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
         wordLength = 0;
         UI.gameObject.SetActive(true);
         Destroy(FindObjectOfType<MainMenu>());
+        foreach (var button in FindObjectsOfType<LetterButton>())
+            button.ResetButton();
         NextLevel();
     }
 

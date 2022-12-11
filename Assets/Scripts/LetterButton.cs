@@ -11,12 +11,10 @@ public class LetterButton : Button
     private static readonly Color CorrectColor = Color.green;
     private static readonly Color IncorrectColor = Color.red;
 
-    public CanvasRenderer ButtonColor;
-
+    private Image ButtonColor;
     public new void Awake()
     {
-        ButtonColor = gameObject.GetComponent<CanvasRenderer>();
-        ButtonColor.SetColor(NeutralColor);
+        ButtonColor = gameObject.GetComponent<Image>();
     }
     public void OnClick(string letter)
     {
@@ -29,12 +27,18 @@ public class LetterButton : Button
        switch (response)
        {
             case true:
-                ButtonColor.SetColor(CorrectColor);
+                ButtonColor.color = CorrectColor;
                 break;
             case false:
-                ButtonColor.SetColor(IncorrectColor);
+                ButtonColor.color = IncorrectColor;
                 break;
        }
        this.enabled = false; // don't allow the player to click this button anymore
+    }
+
+    public void ResetButton()
+    {
+        this.enabled = true;
+        ButtonColor.color = NeutralColor;
     }
 }
