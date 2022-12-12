@@ -527,7 +527,6 @@ MonoBehaviour:
           m_StringArgument: v
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 141420076}
 --- !u!1 &146778096
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +661,6 @@ MonoBehaviour:
           m_StringArgument: d
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 146778100}
 --- !u!1 &197747178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1065,6 @@ MonoBehaviour:
           m_StringArgument: c
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 264660201}
 --- !u!1 &319176791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1739,6 @@ MonoBehaviour:
           m_StringArgument: j
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 374344319}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1750,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: MainCamera
@@ -1837,7 +1834,104 @@ MonoBehaviour:
   blanksDisplay: {fileID: 1643349832}
   levelDisplay: {fileID: 711913616}
   scoreDisplay: {fileID: 0}
+  StartGameSound: {fileID: 519420034}
   UI: {fileID: 1408340005}
+--- !u!82 &519420034
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d9b941cc161a0ae4b8ba5d5257b996c7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &544233675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,7 +2278,6 @@ MonoBehaviour:
           m_StringArgument: b
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 597643261}
 --- !u!1 &683507385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2461,6 @@ MonoBehaviour:
           m_StringArgument: a
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 700546188}
 --- !u!1 &700976010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,7 +3000,6 @@ MonoBehaviour:
           m_StringArgument: w
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 725103558}
 --- !u!1 &745234089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,7 +3134,6 @@ MonoBehaviour:
           m_StringArgument: n
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 745234093}
 --- !u!1 &772086498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3906,7 +3996,6 @@ MonoBehaviour:
           m_StringArgument: p
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1028234236}
 --- !u!1 &1047247797
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,7 +4235,6 @@ MonoBehaviour:
           m_StringArgument: u
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1132759894}
 --- !u!1 &1182870666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4281,7 +4369,6 @@ MonoBehaviour:
           m_StringArgument: l
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1182870670}
 --- !u!1 &1230100187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,7 +4580,6 @@ MonoBehaviour:
           m_StringArgument: y
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1262384918}
 --- !u!1 &1307223709
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,7 +5089,6 @@ MonoBehaviour:
           m_StringArgument: r
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1419956757}
 --- !u!1 &1444680997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5543,7 +5628,6 @@ MonoBehaviour:
           m_StringArgument: e
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1543544959}
 --- !u!1 &1558807747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5678,7 +5762,6 @@ MonoBehaviour:
           m_StringArgument: m
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1558807751}
 --- !u!1 &1569491131
 GameObject:
   m_ObjectHideFlags: 0
@@ -5948,7 +6031,6 @@ MonoBehaviour:
           m_StringArgument: f
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1589704940}
 --- !u!1 &1643349830
 GameObject:
   m_ObjectHideFlags: 0
@@ -6218,7 +6300,6 @@ MonoBehaviour:
           m_StringArgument: t
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1647620737}
 --- !u!1 &1677435594
 GameObject:
   m_ObjectHideFlags: 0
@@ -6521,7 +6602,6 @@ MonoBehaviour:
           m_StringArgument: g
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1720823548}
 --- !u!1 &1731418483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6656,7 +6736,6 @@ MonoBehaviour:
           m_StringArgument: h
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1731418487}
 --- !u!1 &1798957064
 GameObject:
   m_ObjectHideFlags: 0
@@ -6926,7 +7005,6 @@ MonoBehaviour:
           m_StringArgument: x
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1805260371}
 --- !u!1 &1827714522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7061,7 +7139,6 @@ MonoBehaviour:
           m_StringArgument: s
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1827714526}
 --- !u!1 &1843855887
 GameObject:
   m_ObjectHideFlags: 0
@@ -7196,7 +7273,6 @@ MonoBehaviour:
           m_StringArgument: o
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1843855891}
 --- !u!1 &1896094928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7409,7 +7485,6 @@ MonoBehaviour:
           m_StringArgument: z
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 1898639236}
 --- !u!1 &1906738926
 GameObject:
   m_ObjectHideFlags: 0
@@ -7679,7 +7754,6 @@ MonoBehaviour:
           m_StringArgument: k
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 2070328884}
 --- !u!1 &2090085958
 GameObject:
   m_ObjectHideFlags: 0
@@ -7814,7 +7888,6 @@ MonoBehaviour:
           m_StringArgument: i
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 2090085962}
 --- !u!1 &2098398837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7949,7 +8022,6 @@ MonoBehaviour:
           m_StringArgument: q
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonColor: {fileID: 2098398841}
 --- !u!1 &2134506580
 GameObject:
   m_ObjectHideFlags: 0

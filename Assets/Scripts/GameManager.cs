@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelDisplay;
     public TextMeshProUGUI scoreDisplay;
 
+    [SerializeField] private AudioSource StartGameSound;
+
     public Canvas UI;
 
     public void Start()
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         UI.gameObject.SetActive(true);
         Destroy(FindObjectOfType<MainMenu>());
         NextLevel();
+        StartGameSound.Play();
     }
 
     public void NextLevel()
