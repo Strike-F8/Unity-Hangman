@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 {
     private string[] words;
 
-    public int score;
     public int level;
     public int wordLength;
 
@@ -26,7 +25,6 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI blanksDisplay;
     public TextMeshProUGUI levelDisplay;
-    public TextMeshProUGUI scoreDisplay;
 
     [SerializeField] private AudioSource StartGameSound;
 
@@ -60,7 +58,6 @@ public class GameManager : MonoBehaviour
             letters.Add(c, false);
 
         level = 0;
-        score = 0;
         wordLength = 0;
         UI.gameObject.SetActive(true);
         Destroy(FindObjectOfType<MainMenu>());
